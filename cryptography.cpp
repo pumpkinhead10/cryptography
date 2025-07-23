@@ -142,7 +142,7 @@ int main(void) {
 	std::string caesarCiphered = CaesarCipher().encrypt("This is encrypted with the caesar cipher");
 	cout << caesarCiphered << endl;
 	cout << "Decrypted: " << CaesarCipher().decrypt(caesarCiphered) << endl;
-
+	cout << endl;
 	std::string vigenereCiphered = VigenereCipher().encrypt("This is the Vigenere cipher");
 	cout << vigenereCiphered << endl;
 	cout << "Decrypted: " << VigenereCipher().decrypt(vigenereCiphered) << endl;
