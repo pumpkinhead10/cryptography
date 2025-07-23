@@ -6,16 +6,12 @@ using std::endl;
 class CaesarCipher {
 public:
 	int KEY;
-	CaesarCipher() {
-		 KEY = 3;
-
+	CaesarCipher(const int& key) {
+		 KEY = key;
 	};
 
-	void setKey(int key) {
-		KEY = key;
-	};
 
-	std::string encrypt(std::string plaintext) {
+	std::string encrypt(const std::string& plaintext) {
 		std::string ciphered = "";
 
 		for (int i = 0; i < plaintext.length(); i++) {
@@ -37,7 +33,7 @@ public:
 		return ciphered;
 	}
 
-	std::string decrypt(std::string& ciphered) {
+	std::string decrypt(const std::string& ciphered) {
 		std::string plaintext = "";
 
 		for (int i = 0; i < ciphered.length(); i++) {
@@ -67,11 +63,11 @@ class VigenereCipher
 {
 public:
 	std::string KEY;
-	VigenereCipher() {
-		KEY = "dUH";
+	VigenereCipher(const std::string& key) {
+		KEY = key;
 	}
 
-	std::string encrypt(std::string plaintext) {
+	std::string encrypt(const std::string plaintext) {
 		int keylength = KEY.length();
 		std::string ciphered = "";
 
@@ -104,7 +100,7 @@ public:
 		return ciphered;
 	}
 
-	std::string decrypt(std::string& ciphered) {
+	std::string decrypt(const std::string& ciphered) {
 		int keylength = KEY.length();
 		std::string plaintext = "";
 
@@ -139,12 +135,21 @@ public:
 	}
 };
 int main(void) {
-	std::string caesarCiphered = CaesarCipher().encrypt("This is encrypted with the caesar cipher");
-	cout << caesarCiphered << endl;
-	cout << "Decrypted: " << CaesarCipher().decrypt(caesarCiphered) << endl;
+	CaesarCipher caesar = CaesarCipher(3);
+	std::string caesarEncrypted = caesar.encrypt("Hello, this is the Caesar Cipher");
+	cout << caesarEncrypted << endl;
+	cout << caesar.decrypt(caesarEncrypted) << endl;
+
+
 	cout << endl;
-	std::string vigenereCiphered = VigenereCipher().encrypt("This is the Vigenere cipher");
-	cout << vigenereCiphered << endl;
-	cout << "Decrypted: " << VigenereCipher().decrypt(vigenereCiphered) << endl;
+
+	VigenereCipher vigenere = VigenereCipher("DUH");
+	std::string vigenereEncrypted = vigenere.encrypt("This one is the Vigenere Cipher");
+	cout << vigenereEncrypted << endl;
+	cout << vigenere.decrypt(vigenereEncrypted) << endl;
+
+
+	cout << endl;
+
 	return 0;
 }
