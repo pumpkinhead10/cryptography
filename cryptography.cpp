@@ -7,7 +7,7 @@ class CaesarCipher {
 public:
 	int KEY;
 	CaesarCipher(const int& key) {
-		 KEY = key;
+		KEY = key;
 	};
 
 
@@ -19,7 +19,8 @@ public:
 
 			if (c >= 'A' && c <= 'Z') {
 				ciphered += (char)('A' + (c - 'A' + KEY) % 26);
-			} else if (c >= 'a' && c <= 'z') {
+			}
+			else if (c >= 'a' && c <= 'z') {
 				ciphered += (char)('a' + (c - 'a' + KEY) % 26);
 			}
 			else if (c >= '0' && c <= '9') {
@@ -66,24 +67,24 @@ public:
 	VigenereCipher(const std::string& key) {
 		KEY = key;
 	}
-/*
-You can shift around the whole ASCII table by 
-applying modulus of 128 to both encryption and 
-decryption. But the classical Vigenere cipher
-is based off of English alphabets and numbers.
-English alphabet have the modulus of 26 and
-the numbers, 10. Because of the difference in
-their modulus we have to check the type of
-individual character before applying encryption/decryption.
-If we were to shift special characters
-by simply doing â€œx + shiftâ€ during encryption,
-if those characters are shifted to other numbers
-or alphabets, it will interfere with the previous
-if-else logic. So itâ€™s best to leave the special characters
-out or just shift the whole ASCII without regard
-for type of characters. 
+	/*
+	You can shift around the whole ASCII table by
+	applying modulus of 128 to both encryption and
+	decryption. But the classical Vigenere cipher
+	is based off of English alphabets and numbers.
+	English alphabet have the modulus of 26 and
+	the numbers, 10. Because of the difference in
+	their modulus we have to check the type of
+	individual character before applying encryption/decryption.
+	If we were to shift special characters
+	by simply doing “x + shift” during encryption,
+	if those characters are shifted to other numbers
+	or alphabets, it will interfere with the previous
+	if-else logic. So it’s best to leave the special characters
+	out or just shift the whole ASCII without regard
+	for type of characters.
 
-*/
+	*/
 	std::string encrypt(const std::string plaintext) {
 		int keylength = KEY.length();
 		std::string ciphered = "";
@@ -102,7 +103,8 @@ for type of characters.
 			char c = plaintext[i];
 			if (c >= 'A' && c <= 'Z') {
 				ciphered += 'A' + (((c - 'A' + shift) % 26 + 26) % 26);
-			} else if (c >= 'a' && c <= 'z') {
+			}
+			else if (c >= 'a' && c <= 'z') {
 				ciphered += 'a' + (((c - 'a' + shift) % 26 + 26) % 26);
 			}
 			else if (c >= '0' && c <= '9') {
@@ -140,7 +142,7 @@ for type of characters.
 				plaintext += 'a' + (((c - 'a' - shift) % 26 + 26) % 26);
 			}
 			else if (c >= '0' && c <= '9') {
-				plaintext += '0' + (((c - '0' - shift) + 10) % 10);
+				plaintext += '0' + (((c - '0' - shift) % 10 + 10) % 10);
 			}
 			else {
 				plaintext += c;
@@ -161,7 +163,7 @@ int main(void) {
 	cout << endl;
 
 	VigenereCipher vigenere = VigenereCipher("DUH");
-	std::string vigenereEncrypted = vigenere.encrypt("This one is the Vigenere Cipher");
+	std::string vigenereEncrypted = vigenere.encrypt("This one is the Vigenere Cipher!");
 	cout << vigenereEncrypted << endl;
 	cout << vigenere.decrypt(vigenereEncrypted) << endl;
 
