@@ -66,7 +66,24 @@ public:
 	VigenereCipher(const std::string& key) {
 		KEY = key;
 	}
+/*
+You can shift around the whole ASCII table by 
+applying modulus of 128 to both encryption to 
+decryption. But the classical Vigenere cipher
+is based off of English alphabets and numbers.
+English alphabet have the modulus of 26 and
+the numbers, 10. Because of the difference in
+their modulus we have to check the type of
+individual character before applying encryption/decryption.
+If we were to shift special characters
+by simply doing “x + shift” during encryption.
+If those characters are shifted to other numbers
+or alphabets, it will interfere with the previous
+if-else logic. So it’s best to leave the special characters
+out or just shift the whole ASCII without regard
+for type of characters. 
 
+*/
 	std::string encrypt(const std::string plaintext) {
 		int keylength = KEY.length();
 		std::string ciphered = "";
