@@ -68,7 +68,7 @@ public:
 	}
 /*
 You can shift around the whole ASCII table by 
-applying modulus of 128 to both encryption to 
+applying modulus of 128 to both encryption and 
 decryption. But the classical Vigenere cipher
 is based off of English alphabets and numbers.
 English alphabet have the modulus of 26 and
