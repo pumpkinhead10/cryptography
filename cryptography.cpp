@@ -75,12 +75,12 @@ public:
 	English alphabet have the modulus of 26 and
 	the numbers, 10. Because of the difference in
 	their modulus we have to check the type of
-	individual character before applying encryption/decryption.
+	individual character using if-else before applying encryption/decryption.
 	If we were to shift special characters
-	by simply doing ìx + shiftî during encryption,
+	by simply doing ‚Äúx + shift‚Äù during encryption,
 	if those characters are shifted to other numbers
 	or alphabets, it will interfere with the previous
-	if-else logic. So itís best to leave the special characters
+	if-else logic. So it‚Äôs best to leave the special characters
 	out or just shift the whole ASCII without regard
 	for type of characters.
 
