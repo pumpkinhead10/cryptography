@@ -76,8 +76,8 @@ the numbers, 10. Because of the difference in
 their modulus we have to check the type of
 individual character before applying encryption/decryption.
 If we were to shift special characters
-by simply doing “x + shift” during encryption.
-If those characters are shifted to other numbers
+by simply doing “x + shift” during encryption,
+if those characters are shifted to other numbers
 or alphabets, it will interfere with the previous
 if-else logic. So it’s best to leave the special characters
 out or just shift the whole ASCII without regard
